@@ -1,0 +1,17 @@
+version: 0.1
+
+phases:
+  pre_build:
+    commands:
+      - echo `date +%s`
+      - echo Logging into Amazon ECR...
+      - $(aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 435682496595.dkr.ecr.us-east-2.amazonaws.com)
+  build:
+    commands:
+      - echo Building and tagging container
+      - docker build -t test .
+      - docker tag test:latest 435682496595.dkr.ecr.us-east-2.amazonaws.com/test:latest
+  post_build:
+    commands:
+      - echo Pushing docker image
+      - docker push 435682496595.dkr.ecr.us-east-2.amazonaws.com/test:latest
