@@ -14,8 +14,8 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...
-      - nohup /usr/local/bin/dockerd --host=unix:///var/run/docker.sock --host=tcp://0.0.0.0:2375 --storage-driver=overlay&
-      - timeout 15 sh -c "until docker info; do echo .; sleep 1; done"
+      - sudo service docker stop
+      - sudo service docker start
       - docker build -t $REPOSITORY_URI:latest .
       - docker tag $REPOSITORY_URI:latest #$REPOSITORY_URI:$IMAGE_TAG
   post_build:
