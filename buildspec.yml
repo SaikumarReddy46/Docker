@@ -3,6 +3,7 @@ version: 0.1
 phases:
   pre_build:
     commands:
+      - aws configure
       - echo `date +%s`
       - echo Logging into Amazon ECR...
       - aws ecr get-login --region us-east-2
