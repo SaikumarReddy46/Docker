@@ -10,7 +10,6 @@ phases:
       - echo Logging in to Amazon ECR...
       - aws --version
       - nohup /usr/local/bin/dockerd --host=unix:///var/run/docker.sock --host=tcp://0.0.0.0:2375 --storage-driver=overlay&
-      - timeout -t 15 sh -c "until docker info; do echo .; sleep 1; done"
       - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
       - REPOSITORY_URI=435682496595.dkr.ecr.us-east-2.amazonaws.com/test
       #- COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
