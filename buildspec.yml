@@ -18,8 +18,8 @@ phases:
       - IMAGE_TAG=build-$(echo $CODEBUILD_BUILD_ID | awk -F":" '{print $2}')
       - echo Build started on `date`
       - echo Building the Docker image...
-      - docker build -t $REPOSITORY_URI:latest2 .
-      - docker run -d -p 8080:3000 $REPOSITORY_URI
+      - docker build -t $REPOSITORY_URI:latest3 .
+      - docker run -d -p 8080:3000 $REPOSITORY_URI:latest3
       #- docker tag $REPOSITORY_URI:latest #$REPOSITORY_URI:$IMAGE_TAG
   post_build:
     commands:
