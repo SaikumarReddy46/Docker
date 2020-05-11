@@ -8,9 +8,6 @@ phases:
    #commands:
       #- nohup /usr/local/bin/dockerd --host=unix:///var/run/docker.sock --host=tcp://0.0.0.0:2375 --storage-driver=overlay&
       #- timeout 15 sh -c "until docker info; do echo .; sleep 1; done"
-  Pre_build:
-    commands:
-      - echo Logging in to Amazon ECR...
   build:
     commands:
       - echo Logging in to Amazon ECR...
